@@ -1,12 +1,10 @@
 """
 ascii.py
-
 A python program that convert images to ASCII art.
-
 Author: Mahesh Venkitachalam
 """
 
-import sys, random, argparse
+import sys, random, argparse, os
 import numpy as np
 import math
 
@@ -106,12 +104,18 @@ def main():
     args = parser.parse_args()
   
     imgFile = args.imgFile
-    # set output file
-    outFile = 'out.txt'
+    # Set output file
+    print("Current working directory: ", os.getcwd())
+    os.chdir("ascii")
+    print("New working directory: ", os.getcwd())
+
+    inFileName = os.path.basename(imgFile)
+    outFile = f'data/output/{inFileName}.txt'
+
     if args.outFile:
         outFile = args.outFile
     # set scale default as 0.43 which suits a Courier font
-    scale = 0.43
+    scale = 0.43 
     if args.scale:
         scale = float(args.scale)
     # set cols
@@ -119,7 +123,7 @@ def main():
     if args.cols:
         cols = int(args.cols)
 
-    print('generating ASCII art...')
+    print('Now generating ASCII art...')
     # convert image to ascii txt
     aimg = convertImageToAscii(imgFile, cols, scale, args.moreLevels)
 
