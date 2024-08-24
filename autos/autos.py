@@ -114,7 +114,7 @@ def createAutostereogram(dmap, tile):
 # main() function
 def main():
   # use sys.argv if needed
-  print('creating autostereogram...')
+  print('Creating autostereogram...')
   # create parser
   parser = argparse.ArgumentParser(description="Autosterograms...")
   # add expected arguments
